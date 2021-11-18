@@ -9,4 +9,6 @@ class Car extends Model
 {
     use HasFactory;
     protected $table = 'cars';
+    public $fillable = ['plate_number', 'owner', 'travel_fee'];
+    public $timestamp = false;
 }

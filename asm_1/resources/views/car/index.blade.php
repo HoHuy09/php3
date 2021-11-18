@@ -13,7 +13,7 @@
     <tbody>
         @foreach ($car as $item) 
             <tr>
-                <td>{{$item->id}}</td>
+                <td>{{$loop->iteration}}</td>
                 <td>{{$item->plate_number}}</td>
                 <td>{{$item->owner}}</td>
                 <td>{{$item->travel_fee}}</td>
