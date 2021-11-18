@@ -9,4 +9,6 @@ class Passenger extends Model
 {
     use HasFactory;
     protected $table = 'passengers';
+    public $fillable = ['name', 'car_id', 'travel_time'];
+    public $timestamp = false;
 }
