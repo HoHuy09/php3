@@ -11,4 +11,7 @@ class Passenger extends Model
     protected $table = 'passengers';
     public $fillable = ['name', 'car_id', 'travel_time'];
     public $timestamp = false;
+    public function cars(){
+        return $this->belongsTo(Car::class,'car_id');
+    }
 }
