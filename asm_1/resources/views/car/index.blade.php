@@ -1,5 +1,6 @@
 @extends('admin.layouts.main')
 @section('content')
+
 <table>
     <div class="card-body">
         <table class="table table-stripped">
@@ -9,6 +10,7 @@
         <th>Owner</th>
         <th>Travel_fee</th>
         <th>Plate_Image</th>
+        
         <th>
             <a href="{{route('car.add')}}">Add new</a>
         </th>

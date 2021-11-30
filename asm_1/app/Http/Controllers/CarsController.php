@@ -9,8 +9,9 @@ use Illuminate\Support\Facades\Storage;
 
 class CarsController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $car = Car::all();
+        
         return view('car.index',compact('car'));
     }
     public function addForm(){
