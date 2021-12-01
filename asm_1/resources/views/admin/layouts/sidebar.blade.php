@@ -67,6 +67,14 @@
                   </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{'http://localhost:8000/logout'}}" class="nav-link">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <p>
+                    Đăng xuất
+                  </p>
+                </a>
+              </li>
              
              
   

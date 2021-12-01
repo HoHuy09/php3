@@ -39,6 +39,10 @@ Route::prefix('passenger')->middleware('auth')->group(function() {
 });
 Route::prefix('user')->middleware('auth')->group(function() {
     Route::get('/',[UsersController::class,'index'])->name('user.index');
+    Route::get('add', [UsersController::class, 'addForm'])->name('user.add');
+    Route::post('add', [UsersController::class, 'saveAdd']);
+    Route::get('edit/{id}',[UsersController::class,'editForm'])->name('user.edit');
+    Route::post('edit/{id}', [UsersController::class, 'saveEdit']);
     Route::get('remove/{id}',[UsersController::class,'remove'])->name('user.remove');
 });
 Route::get('login', [LoginController::class, 'loginForm'])->name('login');
