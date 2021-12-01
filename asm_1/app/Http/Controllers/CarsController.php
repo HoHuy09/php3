@@ -22,13 +22,11 @@ class CarsController extends Controller
         $model = new Car();
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $oldImg = str_replace('storage/', 'public/', $model->image);
-            Storage::delete($oldImg);
-
-            $imgPath = $request->file('image')->store('public/products');
-            $imgPath = str_replace('public/', 'storage/', $imgPath);
+            $imgPath = $request->file('image')->store('products');
+            $imgPath = str_replace('public/', '', $imgPath);
             $model->plate_image = $imgPath;
         }
+        
         $model->save();
         return redirect(route('car.index'));
     }
@@ -40,11 +38,10 @@ class CarsController extends Controller
         $model = Car::find($id);
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $oldImg = str_replace('storage/', 'public/', $model->image);
-            Storage::delete($oldImg);
+            Storage::delete($model->image);
 
-            $imgPath = $request->file('image')->store('public/products');
-            $imgPath = str_replace('public/', 'storage/', $imgPath);
+            $imgPath = $request->file('image')->store('products');
+            $imgPath = str_replace('public/', '', $imgPath);
             $model->plate_image = $imgPath;
         }
         $model->save();

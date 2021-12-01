@@ -21,13 +21,11 @@ class PassengersController extends Controller
         $model = new Passenger();
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $oldImg = str_replace('storage/', 'public/', $model->image);
-            Storage::delete($oldImg);
-
-            $imgPath = $request->file('image')->store('public/products');
-            $imgPath = str_replace('public/', 'storage/', $imgPath);
+            $imgPath = $request->file('image')->store('products');
+            $imgPath = str_replace('public/', '', $imgPath);
             $model->avatar = $imgPath;
         }
+        
         $model->save();
         return redirect(route('passenger.index'));
     }
@@ -41,13 +39,13 @@ class PassengersController extends Controller
         $model = Passenger::find($id);
         $model->fill($request->all());
         if($request->hasFile('image')){
-            $oldImg = str_replace('storage/', 'public/', $model->image);
-            Storage::delete($oldImg);
+            Storage::delete($model->image);
 
-            $imgPath = $request->file('image')->store('public/products');
-            $imgPath = str_replace('public/', 'storage/', $imgPath);
+            $imgPath = $request->file('image')->store('products');
+            $imgPath = str_replace('public/', '', $imgPath);
             $model->avatar = $imgPath;
         }
+       
         $model->save();
         return redirect(route('passenger.index'));
     }

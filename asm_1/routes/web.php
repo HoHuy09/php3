@@ -3,6 +3,7 @@
 use App\Http\Controllers\CarsController;
 use App\Http\Controllers\PassengersController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,6 +36,10 @@ Route::prefix('passenger')->middleware('auth')->group(function() {
     Route::get('edit/{id}', [PassengersController::class, 'editForm'])->name('passenger.edit');
     Route::post('edit/{id}', [PassengersController::class, 'saveEdit']);
     Route::get('remove/{id}',[PassengersController::class,'remove'])->name('passenger.remove');
+});
+Route::prefix('user')->middleware('auth')->group(function() {
+    Route::get('/',[UsersController::class,'index'])->name('user.index');
+    Route::get('remove/{id}',[UsersController::class,'remove'])->name('user.remove');
 });
 Route::get('login', [LoginController::class, 'loginForm'])->name('login');
 Route::post('login', [LoginController::class, 'postLogin']);
