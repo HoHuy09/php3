@@ -3,6 +3,7 @@
 use App\Http\Controllers\CarsController;
 use App\Http\Controllers\PassengersController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +37,14 @@ Route::prefix('passenger')->middleware('auth')->group(function() {
     Route::get('edit/{id}', [PassengersController::class, 'editForm'])->name('passenger.edit');
     Route::post('edit/{id}', [PassengersController::class, 'saveEdit']);
     Route::get('remove/{id}',[PassengersController::class,'remove'])->name('passenger.remove');
+});
+Route::prefix('role')->middleware('auth')->group(function() {
+    Route::get('/',[RoleController::class,'index'])->name('role.index');
+    Route::get('add', [RoleController::class, 'addForm'])->name('role.add');
+    Route::post('add', [RoleController::class, 'saveAdd']);
+    Route::get('edit/{id}',[RoleController::class,'editForm'])->name('role.edit');
+    Route::post('edit/{id}', [RoleController::class, 'saveEdit']);
+    Route::get('remove/{id}',[RoleController::class,'remove'])->name('role.remove');
 });
 Route::prefix('user')->middleware('auth')->group(function() {
     Route::get('/',[UsersController::class,'index'])->name('user.index');

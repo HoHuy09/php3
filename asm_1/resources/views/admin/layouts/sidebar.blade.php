@@ -68,6 +68,14 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{route('role.index')}}" class="nav-link">
+                  <i class="fas fa-user-tag"></i>
+                  <p>
+                    Role
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{'http://localhost:8000/logout'}}" class="nav-link">
                   <i class="fas fa-sign-out-alt"></i>
                   <p>
@@ -75,6 +83,7 @@
                   </p>
                 </a>
               </li>
+              
              
              
   
