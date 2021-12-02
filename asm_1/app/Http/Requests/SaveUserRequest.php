@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SaveCarRequest extends FormRequest
+class SaveUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class SaveCarRequest extends FormRequest
     public function rules()
     {
         return [
-            'plate_number' => 'required',
-            'owner' => 'required',
-            'travel_fee' => 'required',
+            'name' => 'required',
+            'travel_time' => 'required',
             'image' => 'required'
         ];
     }
@@ -34,9 +33,8 @@ class SaveCarRequest extends FormRequest
     public function messages()
     {
         return [
-            'plate_number.required' => "Hãy nhập biển số",
-            "owner.required" => "Hãy nhập chủ nhân",
-            "travel_fee.required" => "Hãy nhập giá",
+            'name.required' => "Hãy nhập tên",
+            "travel_time.required" => "Hãy nhập ngày",
             "image.required" => "Hãy up file ảnh",
         ];
     }

@@ -25,7 +25,7 @@
                 
                 <td>
                     <a href="{{route('passenger.edit', ['id' => $item->id])}}">Edit</a>
-                    <a href="{{route('passenger.remove', ['id' => $item->id])}}">Remove</a>
+                    <a onclick="return confirm('Bạn có muốn xóa không?')" href="{{route('passenger.remove', ['id' => $item->id])}}">Remove</a>
                 </td>
             </tr>
         @endforeach 

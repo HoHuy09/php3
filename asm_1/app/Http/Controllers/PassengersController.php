@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SavePassengerRequest;
 use App\Models\Car;
 use App\Models\Passenger;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class PassengersController extends Controller
         $car = Car::all();
         return view('passenger.add',compact('car'));
     }
-    public function saveAdd(Request $request){
+    public function saveAdd(SavePassengerRequest $request){
         $model = new Passenger();
         $model->fill($request->all());
         if($request->hasFile('image')){

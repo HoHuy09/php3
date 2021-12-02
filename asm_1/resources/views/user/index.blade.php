@@ -26,7 +26,7 @@
                 <td>{{$item->roles->name}}</td>
                 <td>
                     <a href="{{route('user.edit', ['id' => $item->id])}}">Edit</a>
-                    <a href="{{route('user.remove', ['id' => $item->id])}}">Remove</a>
+                    <a onclick="return confirm('Bạn có muốn xóa không?')" href="{{route('user.remove', ['id' => $item->id])}}">Remove</a>
                 </td>
             </tr>
         @endforeach 

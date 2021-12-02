@@ -33,4 +33,8 @@ class RoleController extends Controller
         $model->save();
         return redirect(route('role.index'));
     }
+    public function remove($id){
+        Role::destroy($id);
+        return redirect(route('role.index'));
+    }
 }
