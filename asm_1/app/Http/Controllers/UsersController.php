@@ -12,9 +12,24 @@ use Illuminate\Support\Facades\Storage;
 class UsersController extends Controller
 {
     public function index(Request $request){
-        $user = User::all();
-        $user->load('roles');  
-        return view('user.index',compact('user'));
+        $pageSize = 10;
+       
+
+        $keyword = $request->has('keyword') ? $request->keyword : "";
+        
+
+        // dd($keyword, $cate_id, $rq_column_names, $rq_order_by);
+       $query = User::where('email', 'like', "%$keyword%")->orWhere('name', 'like', "%$keyword%");
+        
+        
+        $user = $query->paginate($pageSize);
+        // giữ lại các giá trị đang tìm kiếm trong link phần trang
+        $user->appends($request->input());
+
+        
+        $searchData = compact('keyword');
+        
+        return view('user.index', compact('user', 'searchData'));
     }
     public function addForm(){
         $roles = Role::all();
