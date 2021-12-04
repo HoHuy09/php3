@@ -9,6 +9,10 @@
                   <label for="">Name</label>
                   <input type="text" name="name" class="form-control" value="{{$model->name}}" placeholder="Nhập tên">
                 </div>
+                @error('name')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+               
                 <div class="form-group">
                     <label for="">Chọn xe có biển số</label>
                     <select name="car_id" class="form-control">
@@ -21,11 +25,17 @@
                     <label for="">Travel_time:</label>
                     <input type="date" name="travel_time" value="{{$model->travel_time}}" class="form-control" >
                 </div>
+                @error('travel_time')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
                 <div class="form-group">
                     <label for="">Avatar:</label>
                     <input type="file" name="image" class="form-control" >
                     <img src="{{asset($model->avatar)}}" width="200px">
                 </div>
+                @error('image')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
                 <br>    
             </div>
             

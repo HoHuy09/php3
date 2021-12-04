@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveRoleRequest;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class RoleController extends Controller
         
         return view('role.add');
     }
-    public function saveAdd(Request $request){
+    public function saveAdd(SaveRoleRequest $request){
         $model = new Role();
         $model->fill($request->all());
         $model->save();
@@ -26,7 +27,7 @@ class RoleController extends Controller
         $roles = Role::find($id);
         return view('role.edit',compact('roles'));
     }
-    public function saveEdit($id,Request $request){
+    public function saveEdit($id,SaveRoleRequest $request){
         $model = Role::find($id);
         $model->fill($request->all());
        

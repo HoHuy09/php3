@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SaveCarRequest extends FormRequest
@@ -21,23 +22,31 @@ class SaveCarRequest extends FormRequest
      *
      * @return array
      */
+    
     public function rules()
     {
-        return [
-            'plate_number' => 'required',
-            'owner' => 'required',
-            'travel_fee' => 'required',
-            'image' => 'required'
-        ];
+        $requestRule =  [
+        'plate_number' => ['required',
+        Rule::unique('cars')->ignore($this->id)],
+        'owner' => 'required',
+        'travel_fee' => 'required',
+        'image' => 'mimes:jpg,bmp,png'];
+        if($this->id == null){
+            $requestRule['image'] = "required|" . $requestRule['image'];
+        }
+        return $requestRule;
     }
 
     public function messages()
     {
         return [
             'plate_number.required' => "Hãy nhập biển số",
+            'plate_number.unique' => 'Biển số đã tồn tại',
             "owner.required" => "Hãy nhập chủ nhân",
             "travel_fee.required" => "Hãy nhập giá",
             "image.required" => "Hãy up file ảnh",
+            "image.mimes" => "Hãy nhập đúng định dạng ảnh",
+            
         ];
     }
 }

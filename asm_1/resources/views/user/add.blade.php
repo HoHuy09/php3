@@ -9,6 +9,10 @@
                   <label for="">Name</label>
                   <input type="text" name="name"  class="form-control" placeholder="Nhập tên">
                 </div>
+                @error('name')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+                <br> 
                 <div class="form-group">
                     <label for="">Chọn chức năng</label>
                     <select name="role_id" class="form-control">
@@ -21,15 +25,27 @@
                     <label for="">Email:</label>
                     <input type="email" name="email" class="form-control" placeholder="Nhập email" >
                 </div>
+                @error('email')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+                <br> 
                 <div class="form-group">
                     <label for="">Password:</label>
                     <input type="password" name="password" class="form-control" placeholder="Nhập password" >
                 </div>
+                @error('password')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+                <br> 
                 <div class="form-group">
                     <label for="">Avatar:</label>
                     <input type="file" name="image" class="form-control" >
                     
                 </div>
+                @error('image')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+                <br> 
                 
                 <br>    
             </div>

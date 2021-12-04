@@ -8,7 +8,11 @@
                 <div class="form-group">
                   <label for="">Name</label>
                   <input type="text" name="name" value="{{$roles->name}}"  class="form-control" placeholder="Nhập role">
-                </div>   
+                </div> 
+                @error('name')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+                <br>   
             </div>
             
             <div class="col-12 d-flex justify-content">

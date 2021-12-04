@@ -11,9 +11,24 @@ use Illuminate\Support\Facades\Storage;
 class CarsController extends Controller
 {
     public function index(Request $request){
-        $car = Car::all();
+        $pageSize = 10;
+       
+
+        $keyword = $request->has('keyword') ? $request->keyword : "";
         
-        return view('car.index',compact('car'));
+
+        // dd($keyword, $cate_id, $rq_column_names, $rq_order_by);
+       $query = Car::where('plate_number', 'like', "%$keyword%")->orWhere('owner', 'like', "%$keyword%")->orWhere('travel_fee', 'like', "%$keyword%");
+        
+        
+        $car = $query->paginate($pageSize);
+        // giữ lại các giá trị đang tìm kiếm trong link phần trang
+        $car->appends($request->input());
+
+        
+        $searchData = compact('keyword');
+        
+        return view('car.index', compact('car', 'searchData'));
     }
     public function addForm(){
         
@@ -35,7 +50,7 @@ class CarsController extends Controller
         $model = Car::find($id) ;
         return view('car.edit',compact('model'));
     }
-    public function saveEdit($id,Request $request){
+    public function saveEdit($id,SaveCarRequest $request){
         $model = Car::find($id);
         $model->fill($request->all());
         if($request->hasFile('image')){

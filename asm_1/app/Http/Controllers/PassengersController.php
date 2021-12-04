@@ -10,10 +10,29 @@ use Illuminate\Support\Facades\Storage;
 
 class PassengersController extends Controller
 {
-    public function index(){
-        $passenger = Passenger::all();
-        return view('passenger.index',compact('passenger'));
+    public function index(Request $request){
+        $pageSize = 10;
+       
+
+        $keyword = $request->has('keyword') ? $request->keyword : "";
+        $car_id = $request->has('car_id') ? $request->car_id : "";
+
+        // dd($keyword, $cate_id, $rq_column_names, $rq_order_by);
+       $query = Passenger::where('name', 'like', "%$keyword%");
+       if(!empty($car_id )){
+        $query->where('car_id', $car_id);
     }
+        
+        $passenger = $query->paginate($pageSize);
+        // giữ lại các giá trị đang tìm kiếm trong link phần trang
+        $passenger->appends($request->input());
+        $car = Car::all();
+        
+        $searchData = compact('keyword','car_id');
+        
+        return view('passenger.index', compact('passenger','car', 'searchData'));
+    }
+    
     public function addForm(){
         $car = Car::all();
         return view('passenger.add',compact('car'));
@@ -36,7 +55,7 @@ class PassengersController extends Controller
         
         return view('passenger.edit',compact('model','car'));
     }
-    public function saveEdit($id,Request $request){
+    public function saveEdit($id,SavePassengerRequest $request){
         $model = Passenger::find($id);
         $model->fill($request->all());
         if($request->hasFile('image')){

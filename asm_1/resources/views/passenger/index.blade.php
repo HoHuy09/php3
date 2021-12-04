@@ -1,6 +1,25 @@
 @extends('admin.layouts.main')
 @section('content')
 <table>
+    <form class="row g-3">
+        <div class="col-6">
+          <label for="staticEmail2" class="visually-hidden">Từ khóa</label>
+          <input type="text"  class="form-control-plaintext" name="keyword" id="staticEmail2" value="{{$searchData['keyword']}}" placeholder="Nhập Tên ...">
+        </div>
+        <div class="col-12">
+            <label for="inputPassword2" class="visually-hidden">Car</label>
+            <select name="car_id" class="form-select" aria-label="Default select example">
+                <option value="">Tất cả</option>
+                @foreach ($car as $item)
+                <option @if($item->id == $searchData['car_id']) selected @endif value="{{$item->id}}">{{$item->plate_number}}</option>
+            @endforeach
+              </select>
+        </div>
+        <br>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Tìm kiếm</button>
+        </div>
+      </form>
     <div class="card-body">
         <table class="table table-stripped">
     <thead>

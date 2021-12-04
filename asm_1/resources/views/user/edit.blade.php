@@ -9,6 +9,10 @@
                   <label for="">Name</label>
                   <input type="text" name="name" value="{{$user->name}}" class="form-control" placeholder="Nhập tên">
                 </div>
+                @error('name')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+                <br> 
                 <div class="form-group">
                     <label for="">Chọn chức năng</label>
                     <select name="role_id" class="form-control">
@@ -21,16 +25,27 @@
                     <label for="">Email:</label>
                     <input type="email" name="email" value="{{$user->email}}" class="form-control" >
                 </div>
+                @error('email')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+                <br> 
                 <div class="form-group">
                     <label for="">Password:</label>
                     <input type="password" name="password" value="{{$user->password}}" class="form-control" >
                 </div>
+                @error('password')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+                <br> 
                 <div class="form-group">
                     <label for="">Avatar:</label>
                     <input type="file" name="image" class="form-control" >
                     <img src="{{asset($user->avatar)}}" width="200px">
                 </div>
-                
+                @error('image')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+                <br> 
                 <br>    
             </div>
             
