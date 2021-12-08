@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-    <h3>Sửa</h3>
+    <h3>Edit</h3>
     <form action="" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">

@@ -9,14 +9,14 @@
             <div class="col-6">
                 <div class="form-group">
                   <label for="">Plate_number</label>
-                  <input type="text" name="plate_number"  class="form-control" placeholder="Nhập biển số">
+                  <input type="text" name="plate_number"     class="form-control" placeholder="Nhập biển số">
                 </div>
                 @error('plate_number')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
                 <div class="form-group">
                     <label for="">Owner</label>
-                    <input type="text" name="owner" class="form-control" placeholder="Chủ nhân">
+                    <input type="text" name="owner"  class="form-control" placeholder="Chủ nhân">
                 </div>
                 @error('owner')
                 <p class="text-danger">{{$message}}</p>

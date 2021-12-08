@@ -3,7 +3,7 @@
 <form class="row g-3">
     <div class="col-6">
       <label for="staticEmail2" class="visually-hidden">Từ khóa</label>
-      <input type="text"  class="form-control-plaintext" name="keyword" id="staticEmail2" value="{{$searchData['keyword']}}" placeholder="Tìm theo biển số - owner - travel-fee">
+      <input type="text"  class="form-control-plaintext" name="keyword" id="staticEmail2" value="{{$searchData['keyword']}}" placeholder="Tìm theo name - email">
     </div>
     
     

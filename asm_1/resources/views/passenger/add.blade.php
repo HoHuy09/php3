@@ -1,6 +1,7 @@
 @extends('admin.layouts.main')
 @section('content')
 <div class="container">
+    <h3>ADD</h3>
     <form action="" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
